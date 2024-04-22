@@ -259,7 +259,7 @@ async function getWeather(latitude, longitude) {
     let weatherData;
     try {
         // Step 0B: Fetch the weather data
-        const response = await fetch(localJSON);
+
         //save it to the weatherData variable
         weatherData = null;
 
