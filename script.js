@@ -256,7 +256,7 @@ async function getWeather(latitude, longitude) {
     const localJSON = './weather-data.json';
 
     console.log(apiURL);
-    let weatherData;
+    let weatherData = null;
     try {
         // Step 0B: Fetch the weather data
 
