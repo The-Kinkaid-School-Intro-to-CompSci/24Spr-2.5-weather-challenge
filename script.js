@@ -80,7 +80,11 @@ function makePopulation(population) {
     // Return the p element
 }
 
+
 function makeSunrise(sunriseTime) {
+    //making a new date time object from the sunriseTime
+    //sunriseTime is in seconds (unix), so we need to multiply by 1000 to get milliseconds (Unix time is in seconds, JavaScript time is in milliseconds)
+    //if you're curious about this, read about epoch time here: https://www.baeldung.com/linux/epoch-time || https://en.wikipedia.org/wiki/Unix_time
     let sunriseTimeDate = new Date(sunriseTime*1000);
     let sunrise = document.createElement('p');
     sunrise.classList.add('card-text');
