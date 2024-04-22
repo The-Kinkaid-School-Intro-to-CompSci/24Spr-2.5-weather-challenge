@@ -98,9 +98,9 @@ function showCity(city) {
     clearContainer(cityCard);
     cityCard.classList.add('card', 'col-12');
     
-    let city = makeCityName(city.name);
+    let cityName = makeCityName(city.name);
     // Append the city element to the cityCard element
-    cityCard.appendChild(city);
+    cityCard.appendChild(cityName);
 
     //TODO: Fill out makeCountry function
     //then append the country element to the cityCard element
@@ -134,12 +134,12 @@ function makeIcon(icon, weatherDescription) {
 }
 
 
-function makeDate(dateTime) {
+function makeDate(dateTimeTxt) {
     let date = document.createElement('h5');
     date.classList.add('card-title');
 
     //handle the date time text formatting
-    let dateTime = new Date(dateTime);
+    let dateTime = new Date(dateTimeTxt);
     const month = dateTime.toLocaleString('default', { month: 'long' });
     const dayOfTheWeek = dateTime.toLocaleString('default', { weekday: 'long' });
     date.textContent = `${dayOfTheWeek}, ${month} ${dateTime.getDate()} ${dateTime.getFullYear()} ${dateTime.toLocaleTimeString()}`;
@@ -148,29 +148,36 @@ function makeDate(dateTime) {
 }
 
 function makeTemperature(temp) {
-    let temperature = document.createElement('p');
-    temperature.classList.add('card-text');
-    temperature.textContent = `${temp}°F`;
+    // Create a new p element
 
-    if(temp > 80) {
-        temperature.classList.add('text-danger');
-    }
+    // Add the card-text class to the p element
 
-    return temperature;
+    // Set the text content of the p element to be like `Temperature: 123.45°F`
+
+    // Return the p element
+
 }
 
 function makeWeather(weather) {
-    let weather = document.createElement('p');
-    weather.classList.add('card-text');
-    weather.textContent = weather;
-    return weather;
+    // Create a new p element
+
+    // Add the card-text class to the p element
+
+    // Set the text content of the p element to be like `Weather: Cloudy`
+
+    // Return the p element
+
 }
 
 function makeHumidity(humidity) {
-    let humidity = document.createElement('p');
-    humidity.classList.add('card-text');
-    humidity.textContent = `Humidity: ${humidity}%`;
-    return humidity;
+
+    // Create a new p element
+
+    // Add the card-text class to the p element
+
+    // Set the text content of the p element to be like `Humidity: 50%`
+
+    // Return the p element
 }
 
 function makeForecastCard(forecast) {
@@ -220,6 +227,7 @@ function showForecast(forecastList) {
 }
 
 function displayWeather(weatherData) {
+    console.log(weatherData);
     let weatherInfoContainer = document.querySelector('#weatherInfo');
     weatherInfoContainer.classList.remove('d-none');
     //Step 1A: Display the city info
@@ -241,22 +249,25 @@ async function getWeather(latitude, longitude) {
     //Step 0B: Construct the URL
     const apiURL =``;
     //Step 0C: Create a local JSON file
-    const localJSON = 'weather-data.json';
+    const localJSON = './weather-data.json';
 
     console.log(apiURL);
-    let weatherData = null;
+    let weatherData;
     try {
         // Step 0B: Fetch the weather data
-        
+        const response = await fetch(localJSON);
         //save it to the weatherData variable
         weatherData = null;
-        console.log(weatherData);
+
+
     }
     catch(error) {
         console.log('error', error);
     }
     // Display the weather
+    console.log(weatherData);
     displayWeather(weatherData);
+
 }
 
 
